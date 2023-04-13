@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
+
+import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentProductBinding;
 import com.example.adminfunitureshopapp.model.Product.Product;
 import com.example.adminfunitureshopapp.model.Product.productsAdapter;
@@ -73,6 +76,25 @@ public class ProductFragment extends Fragment {
         binding.rvProducts.setAdapter(productsAdapter);
         binding.rvProducts.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        binding.btnAddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create a new instance of the AddProductFragment
+                AddProductFragment addProductFragment = new AddProductFragment();
+
+                // Begin a new transaction
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+                // Replace the current fragment with the new AddProductFragment
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, addProductFragment);
+
+                // Add the transaction to the back stack
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit the transaction
+                fragmentTransaction.commit();
+            }
+        });
 
         apiServices = new productsAPIService();
         apiServices.getProducts()

@@ -10,8 +10,8 @@ public interface productsAPI {
     @GET("getProducts.php")
     Single<List<Product>> getProducts();
 
-    @GET("getProductsByCategories.php")
-    Single<List<Product>> getProductsByCategories(
-            @Query("categoryId") int categoryId
-    );
+//    @GET("getProductsByCategories.php")
+//    Single<List<Product>> getProductsByCategories(
+//            @Query("categoryId") int categoryId
+//    );
 }
