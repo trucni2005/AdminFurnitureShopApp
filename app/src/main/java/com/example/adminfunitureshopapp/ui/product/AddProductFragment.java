@@ -15,15 +15,26 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import okhttp3.ResponseBody;
+import retrofit2.HttpException;
 
 import com.example.adminfunitureshopapp.databinding.FragmentAddProductBinding;
 import com.example.adminfunitureshopapp.model.Categories.Categories;
 import com.example.adminfunitureshopapp.viewmodel.CategoriesAPIService;
 import com.example.adminfunitureshopapp.viewmodel.productsAPIService;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.stream.JsonReader;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +45,7 @@ public class AddProductFragment extends Fragment {
     private List<String> newCategories = new ArrayList<>();
     private ArrayAdapter<String> categoryAdapter;
     private Spinner spinnerCategory;
-    private productsAPIService productAPIService;
+    private productsAPIService APIService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,36 +87,53 @@ public class AddProductFragment extends Fragment {
             public void onClick(View view) {
                 // Lấy giá trị của trường edittextName
                 String name = binding.edittextName.getText().toString();
-                int quantity = Integer.parseInt(binding.edittextQuantity.getText().toString());
+                Log.d("name", name);
+                String quantity = binding.edittextQuantity.getText().toString();
+                Log.d("quantity", quantity);
                 String imageUrl = binding.edittextImageurl.getText().toString();
-                int originalPrice = Integer.parseInt(binding.edittextOriginalprice.getText().toString());
-                int discount = Integer.parseInt(binding.edittextDiscount.getText().toString());
+                Log.d("imageUrl", imageUrl);
+                String originalPrice = binding.edittextOriginalprice.getText().toString();
+                Log.d("originalPrice", originalPrice);
+                String discount = binding.edittextDiscount.getText().toString();
+                Log.d("discount", discount);
                 String detail = binding.edittextDetail.getText().toString();
+                Log.d("detail", detail);
                 String type = binding.edittextType.getText().toString();
+                Log.d("type", type);
                 int position = spinnerCategory.getSelectedItemPosition();
-                int categoryId = position + 1; // tăng lên 1 để được id
-//                addProduct(name, quantity, imageUrl, originalPrice, discount, detail, type, categoryId);
+                String categoryId = String.valueOf(position + 1); // tăng lên 1 để được id
+
+                Log.d("categoryId", categoryId);
+                addProduct(name, quantity, imageUrl, originalPrice, discount, detail, type, categoryId);
             }
         });
     }
 
-//    private void addProduct(String name, int quantity, String imageUrl, int originalPrice, int discount, String detail, String type, int categoryId) {
-//        productAPIService = new productsAPIService();
-//        Log.d("DEBUG", "addProduct");
-//        compositeDisposable.add(productAPIService.addProduct(name, quantity, imageUrl, originalPrice, discount, detail, type, categoryId)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        productModel -> {
-//                            if (productModel.isSuccess()) {
-//                                // Xử lý khi thêm sản phẩm thành công
-//                                Toast.makeText(getApplicationContext(), "Add product success!", Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                // Xử lý khi thêm sản phẩm thất bại
-//                                Toast.makeText(getApplicationContext(), productModel.getMessage(), Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                ));
-//    }
+    private void addProduct(String name, String quantity, String imageUrl, String originalPrice, String discount, String detail, String type, String categoryId) {
+        APIService = new productsAPIService();
+        APIService.addProduct(name, Integer.parseInt(quantity), imageUrl, Integer.parseInt(originalPrice), Integer.parseInt(discount), detail, type, categoryId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        // TODO: Xử lý khi đăng ký thành công
+                    }
 
-}
+                    @Override
+                    public void onSuccess(Integer productId) {
+                        // TODO: Xử lý khi thêm sản phẩm thành công
+                        Toast.makeText(getActivity().getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // TODO: Xử lý khi thêm sản phẩm thất bại
+                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
+                        Log.e("TAG", "Error adding product: " + e.getMessage(), e);
+
+
+                    }
+                });
+
+    }}
