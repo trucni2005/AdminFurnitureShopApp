@@ -33,15 +33,12 @@ public class productsAPIService {
     }
 
     public Single<Integer> addProduct(String name, int quantity, String imageUrl, int originalPrice, int discount, String detail, String type, String categoryId) {
-        Log.d("PRODUCT", "Name: " + name);
-        Log.d("PRODUCT", "Quantity: " + quantity);
-        Log.d("PRODUCT", "Image URL: " + imageUrl);
-        Log.d("PRODUCT", "Original Price: " + originalPrice);
-        Log.d("PRODUCT", "Discount: " + discount);
-        Log.d("PRODUCT", "Detail: " + detail);
-        Log.d("PRODUCT", "Type: " + type);
-        Log.d("PRODUCT", "Category ID: " + categoryId);
         return api.addProduct(name, quantity, imageUrl, originalPrice, discount, detail, type, categoryId);
+    }
+
+    public Single<Integer> deleteProduct(int productId) {
+        Log.d("DELETE", String.valueOf(productId));
+        return api.deleteProduct(productId);
     }
 
 }

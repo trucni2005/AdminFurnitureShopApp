@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.adminfunitureshopapp.databinding.ActivityLoginBinding;
 import com.example.adminfunitureshopapp.model.Account.Account;
 import com.example.adminfunitureshopapp.model.Account.UserInfo;
+import com.example.adminfunitureshopapp.ui.product.ProductFragment;
 import com.example.adminfunitureshopapp.viewmodel.AccountAPIService;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if(role.equals("admin")){
                                         Log.d("DEBUG","user");
                                         Intent intent = new Intent(this, MainActivity.class);
+
                                         startActivity(intent);
                                         finish();
                                     }
