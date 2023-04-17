@@ -1,10 +1,14 @@
 package com.example.adminfunitureshopapp.viewmodel;
 
+import com.example.adminfunitureshopapp.model.Account.Account;
 import com.example.adminfunitureshopapp.model.Account.AccountAPI;
 import com.example.adminfunitureshopapp.model.Account.AccountModel;
 
+import java.util.List;
+
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -31,5 +35,9 @@ public class AccountAPIService {
 
     public Observable<AccountModel> UpdateUser(int id, String password, String fullname, String imageAva, String defaultAdress, String email, String phone) {
         return api.updateUser(id, password, fullname, imageAva, defaultAdress, email, phone);
+    }
+
+    public Single<List<Account>> getAccounts() {
+        return api.getAccounts();
     }
 }

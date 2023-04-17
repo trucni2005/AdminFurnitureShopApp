@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private String id;
-    AccountAPIService accountAPIService;
+    private AccountAPIService accountAPIService;
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                                     if(role.equals("admin")){
                                         Log.d("DEBUG","user");
                                         Intent intent = new Intent(this, MainActivity.class);
-
                                         startActivity(intent);
                                         finish();
                                     }
