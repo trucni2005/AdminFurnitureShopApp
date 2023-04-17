@@ -1,8 +1,7 @@
 package com.example.adminfunitureshopapp.model.Product;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Paint;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,47 +11,54 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.AdminFunitureShopApp.ProductDetail;
 import com.example.adminfunitureshopapp.R;
+import com.example.adminfunitureshopapp.ui.product.UpdateProductFragment;
 import com.example.adminfunitureshopapp.viewmodel.productsAPIService;
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.observers.DisposableObserver;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class productsAdapter extends RecyclerView.Adapter<productsAdapter.Viewholder> implements Filterable {
-    private static List<Product> products;
-    private static List<Product> productsCopy;
-    private productsAPIService APIService;
-    private Context context;
 
-    public productsAdapter(List<Product> productList) {
+    private List<Product> products;
+    private List<Product> productsCopy;
+    private productsAPIService APIService;
+    private FragmentActivity fragment;
+    private OnCloseListener mListener;
+
+    public productsAdapter(List<Product> productList, FragmentActivity fragment) {
         this.products = productList;
-        this.context = context;
+        this.fragment = fragment;
         this.productsCopy = productList;
         notifyDataSetChanged();
+    }
+
+
+    public interface OnCloseListener {
+        void onClose();
     }
 
     @NonNull
     @Override
     public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(fragment)
                 .inflate(R.layout.product_item, parent, false);
         return new Viewholder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         Product product = products.get(position);
@@ -68,6 +74,18 @@ public class productsAdapter extends RecyclerView.Adapter<productsAdapter.Viewho
                 deleteProduct(productId);
             }
         });
+
+        holder.btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Product product = products.get(holder.getAdapterPosition());
+                UpdateProductFragment dialogFragment = new UpdateProductFragment(product.getId(), product.getName(), product.getQuantity(),
+                        product.getImageUrl(), product.getOriginalPrice(),
+                        product.getDiscount(), product.getPrice(), product.getDetail(), product.getType());
+                dialogFragment.show(fragment.getSupportFragmentManager(), "Update Product Dialog");
+            }
+        });
+
     }
 
     @Override
@@ -86,6 +104,7 @@ public class productsAdapter extends RecyclerView.Adapter<productsAdapter.Viewho
         public TextView tvAmount;
         public TextView tvPrice;
         public Button btnDelete;
+        public Button btnEdit;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -94,6 +113,7 @@ public class productsAdapter extends RecyclerView.Adapter<productsAdapter.Viewho
             tvPrice = itemView.findViewById(R.id.tv_price);
             tvAmount = itemView.findViewById(R.id.tv_amount);
             btnDelete = itemView.findViewById(R.id.btn_delete);
+            btnEdit = itemView.findViewById(R.id.btn_edit);
         }
     }
 

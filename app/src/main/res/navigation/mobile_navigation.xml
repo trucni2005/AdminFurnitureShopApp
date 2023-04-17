@@ -11,6 +11,11 @@
         tools:layout="@layout/fragment_add_product" ></fragment>
 
     <fragment
+        android:id="@+id/nav_update_product"
+        android:name="com.example.adminfunitureshopapp.ui.product.UpdateProductFragment"
+        tools:layout="@layout/fragment_update_product" ></fragment>
+
+    <fragment
         android:id="@+id/nav_product"
         android:name="com.example.adminfunitureshopapp.ui.product.ProductFragment"
         tools:layout="@layout/fragment_product" ></fragment>

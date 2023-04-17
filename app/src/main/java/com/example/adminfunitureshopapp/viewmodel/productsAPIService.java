@@ -8,6 +8,7 @@ import com.example.adminfunitureshopapp.model.Product.productsAPI;
 import java.util.List;
 
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Retrofit;
@@ -36,9 +37,21 @@ public class productsAPIService {
         return api.addProduct(name, quantity, imageUrl, originalPrice, discount, detail, type, categoryId);
     }
 
+    public Single<Integer> updateProduct(int id, String name, int quantity, String imageUrl, int originalPrice, int discount, String detail, String type)
+    {
+        Log.d("API", "id: " + id);
+        Log.d("API", "name: " + name);
+        Log.d("API", "quantity: " + quantity);
+        Log.d("API", "imageUrl: " + imageUrl);
+        Log.d("API", "originalPrice: " + originalPrice);
+        Log.d("API", "discount: " + discount);
+        Log.d("API", "detail: " + detail);
+        Log.d("API", "type: " + type);
+        return api.updateProduct(id, name, quantity, imageUrl, originalPrice, discount, detail, type);
+    }
+
     public Single<Integer> deleteProduct(int productId) {
         Log.d("DELETE", String.valueOf(productId));
         return api.deleteProduct(productId);
     }
-
 }

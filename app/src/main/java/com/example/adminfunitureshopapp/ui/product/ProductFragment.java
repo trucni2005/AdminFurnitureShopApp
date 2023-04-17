@@ -1,33 +1,24 @@
 package com.example.adminfunitureshopapp.ui.product;
-
-import android.graphics.Outline;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.ViewFlipper;
 
 import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentProductBinding;
 import com.example.adminfunitureshopapp.model.Product.Product;
 import com.example.adminfunitureshopapp.model.Product.productsAdapter;
 import com.example.adminfunitureshopapp.viewmodel.productsAPIService;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +31,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class ProductFragment extends Fragment {
 
     private FragmentProductBinding binding;
+
     private productsAPIService apiServices;
     private RecyclerView rvDogs;
     private ArrayList<Product> products;
@@ -49,6 +41,7 @@ public class ProductFragment extends Fragment {
 
     public ProductFragment() {
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +56,7 @@ public class ProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewRoot = binding.getRoot();
+        // Set the dialog width and height
         return viewRoot;
     }
 
@@ -72,7 +66,7 @@ public class ProductFragment extends Fragment {
 
         products = new ArrayList<Product>();
         newProducts = new ArrayList<Product>();
-        productsAdapter = new productsAdapter(newProducts);
+        productsAdapter = new productsAdapter(newProducts, getActivity());
         binding.rvProducts.setAdapter(productsAdapter);
         binding.rvProducts.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -95,6 +89,7 @@ public class ProductFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
 
         apiServices = new productsAPIService();
         apiServices.getProducts()
