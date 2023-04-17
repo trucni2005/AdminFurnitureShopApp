@@ -155,12 +155,13 @@ public class UpdateProductFragment extends DialogFragment {
                     @Override
                     public void onSuccess(Integer productId) {
                         Toast.makeText(getActivity().getApplicationContext(), "Update Success", Toast.LENGTH_SHORT).show();
+                        dismiss();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Toast.makeText(getActivity().getApplicationContext(), "Update Success", Toast.LENGTH_SHORT).show();
-
+                        dismiss();
                     }
                 });
 
