@@ -27,4 +27,16 @@ public class CategoriesAPIService {
     public Single<List<Categories>> getCategories() {
         return api.getCategories();
     }
+
+    public Single<Integer> addCategory(String name, String imageUrl) {
+        return  api.addCategory(name, imageUrl);
+    }
+
+    public Single<Integer> updateCategory(int id, String name, String imageUrl) {
+        return api.updateCategory(id, name, imageUrl);
+    }
+
+    public Single<Integer> deleteCategory(int categoryId) {
+        return api.deleteCategory(categoryId);
+    }
 }

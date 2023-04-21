@@ -98,7 +98,7 @@ public class ProductFragment extends Fragment {
                 .subscribeWith(new DisposableSingleObserver<List<Product>>() {
                     @Override
                     public void onSuccess(@io.reactivex.rxjava3.annotations.NonNull List<Product> products) {
-                        Log.d("DEBUG", "Success");
+                        Log.d("DEBUG", "get product Success");
                         for (Product dog : products) {
                             newProducts.add(dog);
                         }
@@ -107,7 +107,7 @@ public class ProductFragment extends Fragment {
 
                     @Override
                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        Log.d("DEBUG", "Fail" + e.getMessage());
+                        Log.d("DEBUG", "get product Fail : " + e.getMessage());
                     }
                 });
 
