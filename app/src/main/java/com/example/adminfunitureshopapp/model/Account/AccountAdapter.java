@@ -34,7 +34,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.Viewhold
     @Override
     public void onBindViewHolder(@NonNull AccountAdapter.Viewholder holder, int position) {
         Account account = accounts.get(position);
-        holder.id.setText(String.valueOf(account.getId()));
+//        holder.id.setText(String.valueOf(account.getId()));
         holder.name.setText(account.getUsername());
         holder.role.setText(account.getRole());
         holder.phone.setText(account.getPhone());
@@ -57,7 +57,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.Viewhold
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             imageUrl = itemView.findViewById(R.id.img_account);
-            id = itemView.findViewById(R.id.tv_Acccount_ID);
+//            id = itemView.findViewById(R.id.tv_Acccount_ID);
             role = itemView.findViewById(R.id.tv_Acccount_role);
             name = itemView.findViewById(R.id.tv_Acccount_name);
             phone = itemView.findViewById(R.id.tv_Acccount_phone);

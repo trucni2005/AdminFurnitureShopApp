@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f3eef3"
     tools:context=".ui.product.ProductFragment">
 
     <LinearLayout
@@ -15,13 +16,18 @@
             android:id="@+id/rv_Products"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+
             android:layout_weight="1"
             android:scrollbars="vertical" />
 
         <Button
             android:id="@+id/btn_add_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="340dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#fd6b68"
+            android:fontFamily="@font/poppins_semibold"
             android:text="ADD NEW PRODUCT" />
 
     </LinearLayout>
