@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentAccountBinding;
 import com.example.adminfunitureshopapp.model.Account.Account;
 import com.example.adminfunitureshopapp.model.Account.AccountAdapter;
+import com.example.adminfunitureshopapp.ui.product.AddProductFragment;
 import com.example.adminfunitureshopapp.viewmodel.AccountAPIService;
 
 import java.util.ArrayList;
@@ -46,7 +49,7 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         accounts = new ArrayList<Account>();
-        accountAdapter = new AccountAdapter(accounts);
+        accountAdapter = new AccountAdapter(accounts, getActivity());
         binding.rvAccounts.setAdapter(accountAdapter);
         binding.rvAccounts.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -70,6 +73,26 @@ public class AccountFragment extends Fragment {
                         Log.d("DEBUG", "Fail" + e.getMessage());
                     }
                 });
+
+        binding.btnAddUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create a new instance of the AddProductFragment
+                AddUserFragment addUserFragment = new AddUserFragment();
+
+                // Begin a new transaction
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+                // Replace the current fragment with the new AddProductFragment
+                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, addUserFragment);
+
+                // Add the transaction to the back stack
+                fragmentTransaction.addToBackStack(null);
+
+                // Commit the transaction
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override

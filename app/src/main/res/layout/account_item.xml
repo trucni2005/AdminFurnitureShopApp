@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:id="@+id/liner_acc_item"
         >
 
         <ImageView
@@ -77,7 +78,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btn_resetpass"
+                android:id="@+id/btn_resetpass_acc"
                 android:layout_width="100dp"
                 android:layout_height="43dp"
                 android:text="RESET"
@@ -91,7 +92,7 @@
             </Button>
 
             <Button
-                android:id="@+id/btn_delete"
+                android:id="@+id/btn_delete_acc"
                 android:layout_width="100dp"
                 android:layout_height="43dp"
                 android:text="DELETE"

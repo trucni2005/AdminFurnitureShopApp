@@ -40,4 +40,12 @@ public class AccountAPIService {
     public Single<List<Account>> getAccounts() {
         return api.getAccounts();
     }
+
+    public Single<Integer> deleteAcc(int id) {
+        return api.deleteAcc(id);
+    }
+
+    public Single<Integer> resetPass(int id) {
+        return api.resetPass(id);
+    }
 }

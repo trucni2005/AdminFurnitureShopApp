@@ -132,7 +132,6 @@ public class AddProductFragment extends Fragment {
                         Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
                         Log.e("TAG", "Error adding product: " + e.getMessage(), e);
 
-
                     }
                 });
 

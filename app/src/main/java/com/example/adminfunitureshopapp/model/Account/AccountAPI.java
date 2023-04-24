@@ -48,4 +48,13 @@ public interface AccountAPI {
             @Field("phone") String phone
     );
 
+    @POST("deleteAcc.php")
+    @FormUrlEncoded
+    Single<Integer> deleteAcc(@Field("id") int id);
+
+    @POST("resetPassAcc.php")
+    @FormUrlEncoded
+    Single<Integer> resetPass(
+            @Field("id") Integer id
+    );
 }
