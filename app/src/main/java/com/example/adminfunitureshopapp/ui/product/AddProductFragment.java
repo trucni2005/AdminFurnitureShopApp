@@ -40,7 +40,6 @@ import java.util.List;
 
 public class AddProductFragment extends Fragment {
     private FragmentAddProductBinding binding;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private CategoriesAPIService categoriesAPIService;
     private List<String> newCategories = new ArrayList<>();
     private ArrayAdapter<String> categoryAdapter;
@@ -123,7 +122,7 @@ public class AddProductFragment extends Fragment {
                     @Override
                     public void onSuccess(Integer productId) {
                         // TODO: Xử lý khi thêm sản phẩm thành công
-                        Toast.makeText(getActivity().getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Add Success", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
