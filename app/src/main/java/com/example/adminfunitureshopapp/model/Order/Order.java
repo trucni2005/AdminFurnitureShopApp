@@ -9,8 +9,23 @@ public class Order {
     int idUser;
     String address;
     String phone;
+    String email;
+    int quantity;
     long totalPrice;
+    String fullname;
     ArrayList<Item> item;
+
+    public Order(int id, int idUser, String address, String phone, String email, int quantity, long totalPrice, String fullname, ArrayList<Item> item) {
+        this.id = id;
+        this.idUser = idUser;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.fullname = fullname;
+        this.item = item;
+    }
 
     public int getId() {
         return id;
@@ -44,12 +59,36 @@ public class Order {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public long getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(long totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullName(String fullname) {
+        this.fullname = fullname;
     }
 
     public ArrayList<Item> getItem() {

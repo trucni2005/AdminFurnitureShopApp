@@ -1,27 +1,57 @@
 package com.example.adminfunitureshopapp.model.Item;
 
 public class Item {
-    int idProduct;
-    String nameProduct;
+    int id;
+    String name;
+    int quantity;
+    String imageUrl;
+    int price;
 
-    public Item(int idProduct, String nameProduct) {
-        this.idProduct = idProduct;
-        this.nameProduct = nameProduct;
+    public Item(int id, String name, int quantity, String imageUrl, int price) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.imageUrl = imageUrl;
+        this.price = price;
     }
 
-    public int getIdProduct() {
-        return idProduct;
+    public int getId() {
+        return id;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
+    public String getName() {
+        return name;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

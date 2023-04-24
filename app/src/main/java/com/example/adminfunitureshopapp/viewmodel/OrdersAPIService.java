@@ -1,5 +1,7 @@
 package com.example.adminfunitureshopapp.viewmodel;
 
+import android.util.Log;
+
 import com.example.adminfunitureshopapp.model.Order.Order;
 import com.example.adminfunitureshopapp.model.Order.OrdersAPI;
 import com.example.adminfunitureshopapp.model.Product.Product;
@@ -28,5 +30,10 @@ public class OrdersAPIService {
 
     public Single<List<Order>> getOrders() {
         return api.getOrders();
+    }
+
+    public Single<Integer> CancelOrder(int id) {
+        Log.d("id", String.valueOf(id));
+        return api.CancelOrder(id);
     }
 }

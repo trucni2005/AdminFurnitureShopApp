@@ -25,12 +25,12 @@
         <LinearLayout
             android:layout_gravity="center_vertical"
             android:orientation="vertical"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
                 android:padding="6dp"
-                android:id="@+id/tv_id"
+                android:id="@+id/tv_name"
 
                 android:fontFamily="@font/poppins_semibold"
                 android:layout_width="match_parent"
@@ -39,6 +39,18 @@
                 android:textColor="#376553"
                 android:textSize="17sp"
                 android:textStyle="bold"></TextView>
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="AMOUNT"
+                android:padding="8dp"
+                android:textColor="#376553"
+                android:textSize="12sp">
+            </TextView>
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
@@ -49,26 +61,6 @@
                 android:paddingLeft="8dp"
                 android:textStyle="bold"
                 android:textColor="#e29547"></TextView>
-
-        </LinearLayout>
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="100dp"
-                android:layout_height="43dp"
-                android:text="CANCEL"
-                android:fontFamily="@font/poppins_semibold"
-                android:drawableEnd="@drawable/ic_baseline_delete_24"
-                android:backgroundTint="#fe6464"
-                android:paddingEnd="4dp"
-                android:textColor="#fff"
-                android:textSize="10sp">
-            </Button>
 
         </LinearLayout>
 

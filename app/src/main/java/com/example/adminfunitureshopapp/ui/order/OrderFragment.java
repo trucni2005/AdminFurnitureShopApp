@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,7 +69,8 @@ public class OrderFragment extends Fragment {
 
         order = new ArrayList<Order>();
         newOrder = new ArrayList<Order>();
-        OrdersAdapter = new OrdersAdapter(newOrder, getActivity());
+        FragmentManager fragmentManager = getFragmentManager();
+        OrdersAdapter = new OrdersAdapter(newOrder, fragmentManager);
         binding.rvOrder.setAdapter(OrdersAdapter);
         binding.rvOrder.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -87,7 +89,7 @@ public class OrderFragment extends Fragment {
                     }
                     @Override
                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        Log.d("DEBUG", "get category Fail : " + e.getMessage());
+                        Log.d("DEBUG", "get order Fail : " + e.getMessage());
                     }
                 });
 
