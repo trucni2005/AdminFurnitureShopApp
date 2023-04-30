@@ -75,7 +75,6 @@ public class AddUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addAcc();
-                removeFrag();
             }
         });
 
@@ -118,6 +117,7 @@ public class AddUserFragment extends Fragment {
                             accountModel -> {
                                 if (accountModel.isSuccess()){
                                     Toast.makeText(getContext(), "Add Success!", Toast.LENGTH_SHORT).show();
+                                    removeFrag();
                                 }else {
                                     Toast.makeText(getContext(), accountModel.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
