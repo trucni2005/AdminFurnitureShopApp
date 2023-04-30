@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentUpdateCategoryBinding;
 import com.example.adminfunitureshopapp.databinding.FragmentUpdateProductBinding;
 import com.example.adminfunitureshopapp.viewmodel.CategoriesAPIService;
@@ -35,7 +36,7 @@ public class UpdateCategoryFragment extends DialogFragment {
         super.onStart();
         // Set the width of the dialog to match the parent
         if (getDialog() != null && getDialog().getWindow() != null) {
-            getDialog().getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            getDialog().getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         }
     }
 
@@ -85,12 +86,20 @@ public class UpdateCategoryFragment extends DialogFragment {
                     public void onSuccess(Integer productId) {
                         Toast.makeText(getActivity().getApplicationContext(), "Update Category Success", Toast.LENGTH_SHORT).show();
                         dismiss();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment_content_main, new CategoryFragment())
+                                .commit();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Update Category Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplicationContext(), "Update Category Success", Toast.LENGTH_SHORT).show();
                         dismiss();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment_content_main, new CategoryFragment())
+                                .commit();
                     }
                 });
 

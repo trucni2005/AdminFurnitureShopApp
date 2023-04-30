@@ -1,5 +1,7 @@
 package com.example.adminfunitureshopapp.viewmodel;
 
+import android.util.Log;
+
 import com.example.adminfunitureshopapp.model.Categories.Categories;
 import com.example.adminfunitureshopapp.model.Categories.CategoriesAPI;
 
@@ -29,6 +31,7 @@ public class CategoriesAPIService {
     }
 
     public Single<Integer> addCategory(String name, String imageUrl) {
+        Log.d("TAG", "addCategory: "+ name + imageUrl);
         return  api.addCategory(name, imageUrl);
     }
 

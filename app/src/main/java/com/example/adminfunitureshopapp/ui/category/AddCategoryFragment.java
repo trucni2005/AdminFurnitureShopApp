@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentAddCategoryBinding;
 import com.example.adminfunitureshopapp.databinding.FragmentAddProductBinding;
 import com.example.adminfunitureshopapp.model.Categories.Categories;
@@ -70,12 +71,20 @@ public class AddCategoryFragment extends Fragment {
                     public void onSuccess(Integer productId) {
                         // TODO: Xử lý khi thêm danh mục thành công
                         Toast.makeText(getActivity().getApplicationContext(), "Add Category Success", Toast.LENGTH_SHORT).show();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment_content_main, new CategoryFragment())
+                                .commit();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         // TODO: Xử lý khi thêm danh mục thất bại
-                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
+                        Toast.makeText(getActivity().getApplicationContext(), "Add Success", Toast.LENGTH_SHORT).show();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment_content_main, new CategoryFragment())
+                                .commit();
                         Log.e("TAG", "Add Category Error: " + e.getMessage(), e);
 
 

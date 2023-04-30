@@ -12,7 +12,7 @@ public interface CategoriesAPI {
     @GET("getCategories.php")
     Single<List<Categories>> getCategories();
 
-    @POST("getCategories.php")
+    @POST("addCategory.php")
     @FormUrlEncoded
     Single<Integer> addCategory(
             @Field("name") String name,
