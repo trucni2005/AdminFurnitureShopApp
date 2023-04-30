@@ -58,8 +58,8 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.Viewhold
         holder.name.setText(account.getUsername());
         holder.role.setText(account.getRole());
         holder.phone.setText(account.getPhone());
-        if (account.getRole().equals("admin")) holder.imageUrl.setImageResource(R.drawable.admin_icon);
-            else holder.imageUrl.setImageResource(R.drawable.male_user);
+        if (account.getRole().equals("admin")) holder.imageUrl.setImageResource(R.drawable.manager);
+            else holder.imageUrl.setImageResource(R.drawable.profile);
 
         holder.itemAcc.setOnClickListener(new View.OnClickListener() {
             @Override
