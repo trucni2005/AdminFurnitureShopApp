@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -74,13 +75,14 @@ public class AddUserFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addAcc();
+                removeFrag();
             }
         });
 
         binding.btnCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                removeFrag();
             }
         });
     }
@@ -115,7 +117,7 @@ public class AddUserFragment extends Fragment {
                     .subscribe(
                             accountModel -> {
                                 if (accountModel.isSuccess()){
-                                    Toast.makeText(getContext(), "Register Success!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Add Success!", Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(getContext(), accountModel.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
@@ -125,5 +127,11 @@ public class AddUserFragment extends Fragment {
                             }
                     ));
         }
+    }
+
+    private void removeFrag(){
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.popBackStack();
+        fragmentManager.beginTransaction().remove(AddUserFragment.this).commit();
     }
 }

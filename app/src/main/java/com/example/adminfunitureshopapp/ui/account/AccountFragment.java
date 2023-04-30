@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -77,6 +78,8 @@ public class AccountFragment extends Fragment {
         binding.btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Khởi tạo FragmentManager
+                //FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 // Create a new instance of the AddProductFragment
                 AddUserFragment addUserFragment = new AddUserFragment();
 
