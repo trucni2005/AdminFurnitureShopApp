@@ -5,13 +5,13 @@
 
     $query = "INSERT INTO `categories`(`name`, `imageUrl`) VALUES ('$name', '$imageUrl')";
 
-    if(mysql_query($conn, $query)) {
-        $categoryId = mysql_insert_id($conn);
+    if(mysqli_query($conn, $query)) {
+        $categoryId = mysqli_insert_id($conn);
         $arr = [$categories];
     } else {
         $arr = [
             'success' => false,
-            'message' => 'Error inserting categories'
+            'message' => 'Error inserting categories',
             'result' => null
         ];
     }
