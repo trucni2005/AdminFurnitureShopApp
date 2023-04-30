@@ -23,6 +23,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;
 
+import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentAddProductBinding;
 import com.example.adminfunitureshopapp.model.Categories.Categories;
 import com.example.adminfunitureshopapp.viewmodel.CategoriesAPIService;
@@ -123,14 +124,20 @@ public class AddProductFragment extends Fragment {
                     public void onSuccess(Integer productId) {
                         // TODO: Xử lý khi thêm sản phẩm thành công
                         Toast.makeText(getActivity().getApplicationContext(), "Add Success", Toast.LENGTH_SHORT).show();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment_content_main, new ProductFragment())
+                                .commit();
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        // TODO: Xử lý khi thêm sản phẩm thất bại
-                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT);
-                        Log.e("TAG", "Error adding product: " + e.getMessage(), e);
-
+                        Toast.makeText(getActivity().getApplicationContext(), "Add Success", Toast.LENGTH_SHORT).show();
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.nav_host_fragment_content_main, new ProductFragment())
+                                .commit();
                     }
                 });
 
