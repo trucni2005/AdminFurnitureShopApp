@@ -52,8 +52,8 @@ public class OrderFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = binding.getRoot();
-        return root;
+        binding = FragmentOrderBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
 
