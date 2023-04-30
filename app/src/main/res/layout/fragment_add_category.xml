@@ -8,18 +8,22 @@
     tools:context=".ui.product.AddProductFragment">
 
     <LinearLayout
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:background="@drawable/apps"
-            >
-        </ImageView>
+
+        <TextView
+            android:paddingTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ADD YOUR CATEGORY"
+            android:textColor="#029394"
+            android:textSize="34sp">
+        </TextView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +77,14 @@
             android:text="Submit"
             android:backgroundTint="#fd6b68"
             android:layout_gravity="center_horizontal"/>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/apps"
+            >
+        </ImageView>
 
     </LinearLayout>
 
