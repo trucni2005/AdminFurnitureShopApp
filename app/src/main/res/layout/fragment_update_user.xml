@@ -15,7 +15,6 @@
         android:orientation="vertical">
 
         <TextView
-
             android:fontFamily="@font/poppins_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,6 +46,7 @@
                 android:backgroundTint="#fff"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="username"
+                android:enabled="false"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
                 android:textColorHint="#cbcad1"
@@ -201,25 +201,28 @@
                 />
 
         </LinearLayout>
-        <RadioButton
-            android:id="@+id/radio_updateUser_admin"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Admin"></RadioButton>
-        <RadioButton
-            android:id="@+id/radio_updateUser_user"
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="User"></RadioButton>
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-
-
-
-
+            <RadioButton
+                android:id="@+id/radio_updateUser_admin"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Admin"></RadioButton>
+            <RadioButton
+                android:id="@+id/radio_updateUser_user"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_gravity="center_horizontal"
+                android:text="User"></RadioButton>
+        </LinearLayout>
         <Button
             android:id="@+id/btn_updateUser_submit"
             android:layout_marginTop="20dp"

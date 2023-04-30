@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.adminfunitureshopapp.R;
 import com.example.adminfunitureshopapp.databinding.FragmentAddUserBinding;
 import com.example.adminfunitureshopapp.databinding.FragmentUpdateUserBinding;
+import com.example.adminfunitureshopapp.ui.category.CategoryFragment;
 import com.example.adminfunitureshopapp.viewmodel.AccountAPIService;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -129,16 +130,26 @@ public class UpdateUserFragment extends DialogFragment {
                                 if (accountModel.isSuccess()){
                                     Toast.makeText(getContext(), "Update Account User Success!", Toast.LENGTH_SHORT).show();
                                     dismiss();
+                                    removeFrag();
                                 }else {
                                     Toast.makeText(getContext(), accountModel.getMessage(), Toast.LENGTH_SHORT).show();
                                     dismiss();
+                                    removeFrag();
                                 }
                             },
                             throwable -> {
                                 Toast.makeText(getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                                 dismiss();
+                                removeFrag();
                             }
                     ));
         }
+    }
+
+    private void removeFrag(){
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment_content_main, new AccountFragment())
+                .commit();
     }
 }

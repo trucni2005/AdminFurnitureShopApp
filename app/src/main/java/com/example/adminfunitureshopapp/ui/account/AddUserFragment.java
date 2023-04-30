@@ -130,8 +130,9 @@ public class AddUserFragment extends Fragment {
     }
 
     private void removeFrag(){
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.popBackStack();
-        fragmentManager.beginTransaction().remove(AddUserFragment.this).commit();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment_content_main, new AccountFragment())
+                .commit();
     }
 }
