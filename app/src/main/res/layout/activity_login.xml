@@ -88,7 +88,14 @@
         android:background="@drawable/btn_background"
         android:text="SIGN IN">
     </Button>
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/administrator"
+        android:layout_width="140dp"
+        android:layout_height="140dp">
 
+    </ImageView>
 
 
 
