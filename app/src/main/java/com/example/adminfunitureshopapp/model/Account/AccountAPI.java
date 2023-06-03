@@ -15,7 +15,7 @@ public interface AccountAPI {
     @GET("getAccounts.php")
     Single<List<Account>> getAccounts();
 
-    @POST("register.php")
+    @POST("register-admin.php")
     @FormUrlEncoded
     Observable<AccountModel> register(
             @Field("username") String username,
